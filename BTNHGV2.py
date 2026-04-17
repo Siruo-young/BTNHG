@@ -5,7 +5,12 @@ time1 = time.time()
 from BTNHGV2ParameterClass import BTNHGV2ParameterClass
 from BTNHGV2HeteroDataClass import BTNHGV2HeteroDataClass
 from HeteroModelTrainerTesterClass import HeteroModelTrainerTesterClass
+from HANClass import HANClass
 from HGTClass import HGTClass
+from RGCNClass import RGCNClass
+from SAGEClass import SAGEClass
+from GATClass import GATClass
+from GraphConvClass import GraphConvClass
 from HeteroGCNClass import HeteroGCNClass
 
 time2 = time.time()
@@ -16,6 +21,63 @@ print(f"当前时间: {time.strftime('%m-%d %H:%M:%S', time.localtime())}")
 EXPERIMENT_NAME = "heterogcn_a"
 
 EXPERIMENTS = {
+	# 全模型基线（参数来自 BTNHGV2ParameterClass）
+	"han_base": {
+		"model": "han",
+		"hidden_channels": BTNHGV2ParameterClass.hidden_channels,
+		"num_layers": BTNHGV2ParameterClass.num_layers,
+		"dropout": BTNHGV2ParameterClass.dropout,
+		"lr": BTNHGV2ParameterClass.lr,
+		"weight_decay": BTNHGV2ParameterClass.weight_decay,
+	},
+	"hgt_base": {
+		"model": "hgt",
+		"hidden_channels": BTNHGV2ParameterClass.hidden_channels,
+		"num_layers": BTNHGV2ParameterClass.num_layers,
+		"dropout": BTNHGV2ParameterClass.dropout,
+		"lr": BTNHGV2ParameterClass.lr,
+		"weight_decay": BTNHGV2ParameterClass.weight_decay,
+	},
+	"rgcn_base": {
+		"model": "rgcn",
+		"hidden_channels": BTNHGV2ParameterClass.hidden_channels,
+		"num_layers": BTNHGV2ParameterClass.num_layers,
+		"dropout": BTNHGV2ParameterClass.dropout,
+		"lr": BTNHGV2ParameterClass.lr,
+		"weight_decay": BTNHGV2ParameterClass.weight_decay,
+	},
+	"sage_base": {
+		"model": "sage",
+		"hidden_channels": BTNHGV2ParameterClass.hidden_channels,
+		"num_layers": BTNHGV2ParameterClass.num_layers,
+		"dropout": BTNHGV2ParameterClass.dropout,
+		"lr": BTNHGV2ParameterClass.lr,
+		"weight_decay": BTNHGV2ParameterClass.weight_decay,
+	},
+	"gat_base": {
+		"model": "gat",
+		"hidden_channels": BTNHGV2ParameterClass.hidden_channels,
+		"num_layers": BTNHGV2ParameterClass.num_layers,
+		"dropout": BTNHGV2ParameterClass.dropout,
+		"lr": BTNHGV2ParameterClass.lr,
+		"weight_decay": BTNHGV2ParameterClass.weight_decay,
+	},
+	"graphconv_base": {
+		"model": "graphconv",
+		"hidden_channels": BTNHGV2ParameterClass.hidden_channels,
+		"num_layers": BTNHGV2ParameterClass.num_layers,
+		"dropout": BTNHGV2ParameterClass.dropout,
+		"lr": BTNHGV2ParameterClass.lr,
+		"weight_decay": BTNHGV2ParameterClass.weight_decay,
+	},
+	"heterogcn_base": {
+		"model": "heterogcn",
+		"hidden_channels": BTNHGV2ParameterClass.hidden_channels,
+		"num_layers": BTNHGV2ParameterClass.num_layers,
+		"dropout": BTNHGV2ParameterClass.dropout,
+		"lr": BTNHGV2ParameterClass.lr,
+		"weight_decay": BTNHGV2ParameterClass.weight_decay,
+	},
 	# 公平对比同参组（A）
 	"hgt_a": {
 		"model": "hgt",
@@ -80,6 +142,49 @@ if cfg["model"] == "hgt":
 		num_layers=cfg["num_layers"],
 		dropout=cfg["dropout"],
 		useProj=BTNHGV2ParameterClass.HGT_useProj,
+	)
+elif cfg["model"] == "han":
+	gmodel = HANClass(
+		heteroData=heteroDataCls.heteroData,
+		hidden_channels=cfg["hidden_channels"],
+		out_channels=BTNHGV2ParameterClass.out_channels,
+		num_heads=BTNHGV2ParameterClass.num_heads,
+		dropout=cfg["dropout"],
+	)
+elif cfg["model"] == "rgcn":
+	gmodel = RGCNClass(
+		heteroData=heteroDataCls.heteroData,
+		hidden_channels=cfg["hidden_channels"],
+		out_channels=BTNHGV2ParameterClass.out_channels,
+		num_layers=cfg["num_layers"],
+		dropout=cfg["dropout"],
+	)
+elif cfg["model"] == "sage":
+	gmodel = SAGEClass(
+		heteroData=heteroDataCls.heteroData,
+		hidden_channels=cfg["hidden_channels"],
+		out_channels=BTNHGV2ParameterClass.out_channels,
+		num_layers=cfg["num_layers"],
+		num_heads=BTNHGV2ParameterClass.num_heads,
+		dropout=cfg["dropout"],
+	)
+elif cfg["model"] == "gat":
+	gmodel = GATClass(
+		heteroData=heteroDataCls.heteroData,
+		hidden_channels=cfg["hidden_channels"],
+		out_channels=BTNHGV2ParameterClass.out_channels,
+		num_layers=cfg["num_layers"],
+		num_heads=BTNHGV2ParameterClass.num_heads,
+		dropout=cfg["dropout"],
+	)
+elif cfg["model"] == "graphconv":
+	gmodel = GraphConvClass(
+		heteroData=heteroDataCls.heteroData,
+		hidden_channels=cfg["hidden_channels"],
+		out_channels=BTNHGV2ParameterClass.out_channels,
+		num_layers=cfg["num_layers"],
+		num_heads=BTNHGV2ParameterClass.num_heads,
+		dropout=cfg["dropout"],
 	)
 elif cfg["model"] == "heterogcn":
 	gmodel = HeteroGCNClass(
