@@ -12,6 +12,7 @@ from SAGEClass import SAGEClass
 from GATClass import GATClass
 from GraphConvClass import GraphConvClass
 from HeteroGCNClass import HeteroGCNClass
+from RAHeteroGCN import RAHeteroGCN
 
 time2 = time.time()
 print("import used time: ", time2 - time1)
@@ -78,6 +79,14 @@ EXPERIMENTS = {
 		"lr": BTNHGV2ParameterClass.lr,
 		"weight_decay": BTNHGV2ParameterClass.weight_decay,
 	},
+	"raheterogcn_base": {
+		"model": "raheterogcn",
+		"hidden_channels": BTNHGV2ParameterClass.hidden_channels,
+		"num_layers": BTNHGV2ParameterClass.num_layers,
+		"dropout": BTNHGV2ParameterClass.dropout,
+		"lr": BTNHGV2ParameterClass.lr,
+		"weight_decay": BTNHGV2ParameterClass.weight_decay,
+	},
 	# 公平对比同参组（A）
 	"hgt_a": {
 		"model": "hgt",
@@ -89,6 +98,14 @@ EXPERIMENTS = {
 	},
 	"heterogcn_a": {
 		"model": "heterogcn",
+		"hidden_channels": 64,
+		"num_layers": 3,
+		"dropout": 0.2,
+		"lr": 0.005,
+		"weight_decay": 0.0005,
+	},
+	"raheterogcn_a": {
+		"model": "raheterogcn",
 		"hidden_channels": 64,
 		"num_layers": 3,
 		"dropout": 0.2,
@@ -114,6 +131,30 @@ EXPERIMENTS = {
 	},
 	"heterogcn_d": {
 		"model": "heterogcn",
+		"hidden_channels": 128,
+		"num_layers": 2,
+		"dropout": 0.2,
+		"lr": 0.005,
+		"weight_decay": 0.0005,
+	},
+	"raheterogcn_b": {
+		"model": "raheterogcn",
+		"hidden_channels": 64,
+		"num_layers": 2,
+		"dropout": 0.2,
+		"lr": 0.01,
+		"weight_decay": 0.0005,
+	},
+	"raheterogcn_c": {
+		"model": "raheterogcn",
+		"hidden_channels": 64,
+		"num_layers": 3,
+		"dropout": 0.3,
+		"lr": 0.005,
+		"weight_decay": 0.0005,
+	},
+	"raheterogcn_d": {
+		"model": "raheterogcn",
 		"hidden_channels": 128,
 		"num_layers": 2,
 		"dropout": 0.2,
@@ -188,6 +229,13 @@ elif cfg["model"] == "graphconv":
 	)
 elif cfg["model"] == "heterogcn":
 	gmodel = HeteroGCNClass(
+		heteroData=heteroDataCls.heteroData,
+		hidden_channels=cfg["hidden_channels"],
+		num_layers=cfg["num_layers"],
+		dropout=cfg["dropout"],
+	)
+elif cfg["model"] == "raheterogcn":
+	gmodel = RAHeteroGCN(
 		heteroData=heteroDataCls.heteroData,
 		hidden_channels=cfg["hidden_channels"],
 		num_layers=cfg["num_layers"],
