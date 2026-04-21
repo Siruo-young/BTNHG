@@ -29,15 +29,21 @@ class GATClass(ExtendedNNModule):
 		self.out_channels = out_channels
 		self.num_layers = num_layers
 
-		# 前 num_layers-1 层: HeteroConv
+		# 获取各节点类型的初始特征维度
+		in_channels_dict = {
+			node_type: self.heteroData[node_type].x.size(-1)
+			for node_type in self.heteroData.node_types
+		}
+
+		# 前 num_layers-1 层: HeteroConv（逐层更新 in_channels，避免维度不匹配）
 		self.convs = nn.ModuleList()
 		self.norm_dicts = nn.ModuleList()
 		for i in range(num_layers - 1):
 			conv_dict = {}
 			for edge_type in self.heteroData.edge_types:
 				src, rel, dst = edge_type
-				src_dim = self.heteroData[src].x.size(-1)
-				dst_dim = self.heteroData[dst].x.size(-1)
+				src_dim = in_channels_dict[src] if i == 0 else hidden_channels * num_heads
+				dst_dim = in_channels_dict[dst] if i == 0 else hidden_channels * num_heads
 				conv_dict[edge_type] = GATConv(
 					in_channels=(src_dim, dst_dim),
 					out_channels=hidden_channels,
@@ -53,8 +59,6 @@ class GATClass(ExtendedNNModule):
 			self.norm_dicts.append(norm_dict)
 
 		# 最后一层: 针对 "address" 节点的分类
-		coin_dim = self.heteroData["coin"].x.size(-1)
-		addr_dim = self.heteroData["address"].x.size(-1)
 		self.final_conv = GATConv(
 			in_channels=(hidden_channels * num_heads, hidden_channels * num_heads),
 			out_channels=out_channels,
