@@ -1,0 +1,35 @@
+{
+    "modelName": "GraphConvClass",
+    "kFold_k": 5,
+    "kFold_training_time": "00:28:17",
+    "kFold_accuracy_mean": 0.3243587207969174,
+    "kFold_best_loss": 1.4619048436482747,
+    "kFold_evaluations_mean": {
+        "kFold_accuracy": 0.3243587207969174,
+        "kFold_avg_confidence": 0.38511550426483154,
+        "kFold_balanced_accuracy": 0.2713718846803051,
+        "kFold_precision_macro": 0.298268079389176,
+        "kFold_recall_macro": 0.2713718846803051,
+        "kFold_f1_macro": 0.2270566275831722,
+        "kFold_precision_weighted": 0.3054870931142416,
+        "kFold_recall_weighted": 0.3243587207969174,
+        "kFold_f1_weighted": 0.25806022889482333,
+        "kFold_roc_auc_macro": null,
+        "kFold_pr_auc_macro": null,
+        "kFold_cohen_kappa": 0.2307679381846582,
+        "kFold_mcc": 0.250801387942252
+    },
+    "env_info": {
+        "System": "Linux",
+        "Architecture": "X86_64",
+        "CPU": "Intel(R) Xeon(R) CPU @ 2.00GHz",
+        "Cores": 2,
+        "memory_total_GB": 31.35,
+        "gpu_available": true,
+        "gpu_count": 2,
+        "GPU 0": "Tesla T4 14.56 GB",
+        "GPU 1": "Tesla T4 14.56 GB",
+        "python_version": "3.12.12",
+        "torch_version": "2.10.0+cu128"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "modelName": "HGTClass",
+    "kFold_k": 5,
+    "kFold_training_time": "01:40:40",
+    "kFold_accuracy_mean": 0.5226066330040336,
+    "kFold_best_loss": 1.1223289569218953,
+    "kFold_evaluations_mean": {
+        "kFold_accuracy": 0.5226066330040336,
+        "kFold_avg_confidence": 0.5144945085048676,
+        "kFold_balanced_accuracy": 0.42474789601678237,
+        "kFold_precision_macro": 0.48903990846202194,
+        "kFold_recall_macro": 0.42474789601678237,
+        "kFold_f1_macro": 0.4266395814132225,
+        "kFold_precision_weighted": 0.5020611768888943,
+        "kFold_recall_weighted": 0.5226066330040336,
+        "kFold_f1_weighted": 0.49241624736677786,
+        "kFold_roc_auc_macro": null,
+        "kFold_pr_auc_macro": null,
+        "kFold_cohen_kappa": 0.4494626955925284,
+        "kFold_mcc": 0.45274368677460836
+    },
+    "env_info": {
+        "System": "Windows",
+        "Architecture": "X86_64",
+        "CPU": "AMD Ryzen 7 5825U with Radeon Graphics",
+        "Cores": 8,
+        "memory_total_GB": 15.34,
+        "gpu_available": false,
+        "python_version": "3.9.25",
+        "torch_version": "2.8.0+cpu"
+    }
+}

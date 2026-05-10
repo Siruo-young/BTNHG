@@ -1,0 +1,35 @@
+{
+    "modelName": "CNN1D_DW_SE_class",
+    "kFold_k": 5,
+    "kFold_training_time": "00:06:23",
+    "kFold_accuracy_mean": 0.3655551635493537,
+    "kFold_best_loss": 1.6544434229532878,
+    "kFold_evaluations_mean": {
+        "kFold_accuracy": 0.3655551635493537,
+        "kFold_avg_confidence": 0.3622505486011505,
+        "kFold_balanced_accuracy": 0.297806429050543,
+        "kFold_precision_macro": 0.40268010860017905,
+        "kFold_recall_macro": 0.297806429050543,
+        "kFold_f1_macro": 0.3221779923100304,
+        "kFold_precision_weighted": 0.36364198677956366,
+        "kFold_recall_weighted": 0.3655551635493537,
+        "kFold_f1_weighted": 0.345882800740434,
+        "kFold_roc_auc_macro": 0.8375506847430992,
+        "kFold_pr_auc_macro": 0.34895905252906606,
+        "kFold_cohen_kappa": 0.25968172326147715,
+        "kFold_mcc": 0.26377218677191444
+    },
+    "env_info": {
+        "System": "Linux",
+        "Architecture": "X86_64",
+        "CPU": "Intel(R) Xeon(R) CPU @ 2.00GHz",
+        "Cores": 2,
+        "memory_total_GB": 31.35,
+        "gpu_available": true,
+        "gpu_count": 2,
+        "GPU 0": "Tesla T4 14.56 GB",
+        "GPU 1": "Tesla T4 14.56 GB",
+        "python_version": "3.12.12",
+        "torch_version": "2.10.0+cu128"
+    }
+}

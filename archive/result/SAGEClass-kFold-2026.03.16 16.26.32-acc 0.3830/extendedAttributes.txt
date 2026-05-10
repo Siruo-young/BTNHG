@@ -1,0 +1,32 @@
+{
+    "modelName": "SAGEClass",
+    "kFold_k": 5,
+    "kFold_training_time": "00:26:07",
+    "kFold_accuracy_mean": 0.38297514426380014,
+    "kFold_best_loss": 1.61995534102122,
+    "kFold_evaluations_mean": {
+        "kFold_accuracy": 0.38297514426380014,
+        "kFold_avg_confidence": 0.3616728186607361,
+        "kFold_balanced_accuracy": 0.2511995233183622,
+        "kFold_precision_macro": 0.33600531929221206,
+        "kFold_recall_macro": 0.24796720617696977,
+        "kFold_f1_macro": 0.2369750100341636,
+        "kFold_precision_weighted": 0.36607058983081514,
+        "kFold_recall_weighted": 0.38297514426380014,
+        "kFold_f1_weighted": 0.3227023374793875,
+        "kFold_roc_auc_macro": null,
+        "kFold_pr_auc_macro": null,
+        "kFold_cohen_kappa": 0.2669617133458132,
+        "kFold_mcc": 0.28134976542472345
+    },
+    "env_info": {
+        "System": "Windows",
+        "Architecture": "X86_64",
+        "CPU": "AMD Ryzen 7 5825U with Radeon Graphics",
+        "Cores": 8,
+        "memory_total_GB": 15.34,
+        "gpu_available": false,
+        "python_version": "3.9.25",
+        "torch_version": "2.8.0+cpu"
+    }
+}
